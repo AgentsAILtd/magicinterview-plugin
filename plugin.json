@@ -1,7 +1,7 @@
 {
   "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
   "name": "magicinterview",
-  "version": "1.2.0",
+  "version": "1.3.0",
   "description": "Get live AI suggestions for what to say in job interviews, sales calls, and meetings, tailored to your CV, job description, client brief, and notes.",
   "author": {
     "name": "Sami Halawa",
@@ -30,7 +30,7 @@
       "interface": {
         "displayName": "MagicInterview",
         "shortDescription": "Know what to say next.",
-        "longDescription": "Know what to say next, even when the question catches you off guard. MagicInterview listens to your interview or meeting and shows suggested responses as the conversation happens. Add your CV and the job description to make your answers relevant to the role, or bring your client brief and notes to a sales call. Read a suggestion, adapt it, and keep the conversation moving. Use MagicInterview on your computer or keep it open on your phone beside your call. Android also has a native app. This plugin lets your AI assistant organize your projects, documents, and conversations, then open the right meeting in MagicInterview.",
+        "longDescription": "Know what to say next, even when the question catches you off guard. MagicInterview listens to your interview or meeting and shows suggested responses as the conversation happens. Add your CV and the job description to make your answers relevant to the role, or bring your client brief and notes to a sales call. Read a suggestion, adapt it, and keep the conversation moving. Use MagicInterview on your computer or keep it open on your phone beside your call. Mac and Android apps are also available. This plugin opens a compact, interactive workspace inside compatible AI assistants, connected to your real MagicInterview account. Get suggested answers and coding help; manage projects, conversations, context, files, and transcripts; adjust languages and models; and inspect saved debug logs. Research, CRM context, recaps, and follow-up drafts use your assistant's available tools. Open the same conversation in the full app for live audio, screenshots, focus controls, and voice practice.",
         "developerName": "MagicInterview",
         "category": "Productivity",
         "capabilities": [
@@ -39,6 +39,7 @@
           "Interactive"
         ],
         "websiteURL": "https://magicinterview.ai",
+        "supportURL": "https://magicinterview.ai/contact",
         "privacyPolicyURL": "https://magicinterview.ai/privacy",
         "termsOfServiceURL": "https://magicinterview.ai/terms",
         "defaultPrompt": [

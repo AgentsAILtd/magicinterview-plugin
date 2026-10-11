@@ -26,7 +26,20 @@ This plugin connects your AI assistant to your MagicInterview workspace so it ca
 
 Your assistant sets up the context and opens the right conversation. Start listening in the MagicInterview app when you are ready for live suggestions.
 
-Use the web app on your computer or phone, or the Android app. On iPhone, add MagicInterview to your Home Screen for quick access.
+## A compact workspace inside your assistant
+
+In compatible MCP App hosts, ask to open MagicInterview. The interactive workspace uses your connected account's real projects, conversations, sources, preferences, and saved history—not a separate copy.
+
+One compact feature menu covers:
+
+- **What to say next and coding help:** submit a question, get a context-aware answer, and read formatted prose or code.
+- **Transcript & speakers:** inspect saved turns, add transcript text, and correct speaker labels.
+- **Context & files and projects & conversations:** preview Markdown and original files, attach relevant sources, and manage shared project context and individual conversation notes.
+- **Research & CRM and recap & follow-up:** ask your assistant to use its connected services and current sources, refresh relevant context, or draft a recap and follow-up without sending it.
+- **Languages & models, apps/account/sync, and MCP/debug logs:** manage preferences, inspect connection status, and retrieve saved diagnostics.
+- **Audio/text/screenshots, focus/reading, and voice practice:** paste text in the workspace or open the same conversation in the full app for device-based audio, screenshots, focus controls, and voice practice.
+
+Live listening does not start remotely through MCP. Use the web app on your computer or phone, or the Mac and Android apps. On iPhone, add MagicInterview to your Home Screen for quick access. Links preserve the selected conversation.
 
 ## Connect through your assistant
 
@@ -39,6 +52,8 @@ For clients configured manually, the remote Streamable HTTP endpoint is:
 ```text
 https://magicinterview.ai/mcp
 ```
+
+The compact connection exposes six agent-facing tools: `get_profile`, `get_tool_catalog`, `learn_tools`, `read_tool`, `execute_tool`, and `show_magicinterview`. The catalog provides 34 operations; two private helpers handle interactions inside the app. Older `https://magicinterview.app/mcp` connections remain supported.
 
 ## Suggested prompts
 
