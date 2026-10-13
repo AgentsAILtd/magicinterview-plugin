@@ -1,8 +1,8 @@
 {
   "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
   "name": "magicinterview",
-  "version": "1.3.0",
-  "description": "Get live AI suggestions for what to say in job interviews, sales calls, and meetings, tailored to your CV, job description, client brief, and notes.",
+  "version": "1.4.0",
+  "description": "Know what to say next in live interviews and meetings. Get clear answers and next-step guidance grounded in your CV, job description, client brief and notes.",
   "author": {
     "name": "Sami Halawa",
     "email": "support@magicinterview.ai",
@@ -29,32 +29,32 @@
     "com.openai": {
       "interface": {
         "displayName": "MagicInterview",
-        "shortDescription": "Know what to say next.",
-        "longDescription": "Know what to say next, even when the question catches you off guard. MagicInterview listens to your interview or meeting and shows suggested responses as the conversation happens. Add your CV and the job description to make your answers relevant to the role, or bring your client brief and notes to a sales call. Read a suggestion, adapt it, and keep the conversation moving. Use MagicInterview on your computer or keep it open on your phone beside your call. Mac and Android apps are also available. This plugin opens a compact, interactive workspace inside compatible AI assistants, connected to your real MagicInterview account. Get suggested answers and coding help; manage projects, conversations, context, files, and transcripts; adjust languages and models; and inspect saved debug logs. Research, CRM context, recaps, and follow-up drafts use your assistant's available tools. Open the same conversation in the full app for live audio, screenshots, focus controls, and voice practice.",
-        "developerName": "MagicInterview",
+        "shortDescription": "Live help: what to say next",
+        "longDescription": "Know what to say next when an interview question lands, a client raises an objection, or a meeting takes an unexpected turn. MagicInterview turns the current question and your own context into a clear response you can use or adapt.\n\nGet live help for job interviews, technical discussions, client calls, sales conversations and meetings. Bring your CV, job description, client brief or notes so suggestions reflect your experience, goals and the conversation.\n\nIn ChatGPT, open your connected MagicInterview workspace, choose a conversation and share the question or meeting turn you need help with. Get a concise answer, coding guidance or a useful next question. Save the coaching alongside your conversation and reuse the same context when the discussion continues.\n\nPrepare the right conversation before your call, then open it in the full MagicInterview app on your computer or phone for live audio coaching, readable answers and voice practice. Live audio capture runs in MagicInterview; the ChatGPT workspace works with the text and saved context you provide.\n\nConnect your MagicInterview account to get started.",
+        "developerName": "Agents AI",
         "category": "Productivity",
         "capabilities": [
-          "Read",
-          "Write",
-          "Interactive"
+          "Get context-grounded answers to interview questions and meeting turns",
+          "Prepare interviews and calls with CVs, job descriptions, briefs and notes",
+          "Open and manage your MagicInterview conversations inside ChatGPT",
+          "Get coding help grounded in the current question and saved context",
+          "Save conversation turns, coaching answers and reusable meeting context"
         ],
         "websiteURL": "https://magicinterview.ai",
-        "supportURL": "https://magicinterview.ai/contact",
+        "supportURL": "https://magicinterview.ai/how-it-works#contact",
         "privacyPolicyURL": "https://magicinterview.ai/privacy",
         "termsOfServiceURL": "https://magicinterview.ai/terms",
         "defaultPrompt": [
-          "I have a job interview. Use my CV and the job description to set up live help, then open that MagicInterview conversation.",
-          "I have a meeting with a potential client. Use our brief and past notes to set up live suggestions for the call.",
-          "Prepare today's meetings from my available calendar context and give me MagicInterview links I can open on my phone."
+          "Help me answer this interview question now. Use my CV and job description to suggest a clear response I can say aloud.",
+          "A client just raised an objection. Use my meeting brief to suggest what to say next and one useful follow-up question.",
+          "Open my MagicInterview workspace and prepare my next meeting with a concise brief and context for live answers."
         ],
         "brandColor": "#7795EB",
         "composerIcon": "./assets/icon-192.png",
-        "logo": "./assets/icon-512.png",
-        "screenshots": [
-          "./assets/mac-coach.webp",
-          "./assets/iphone-answer.webp",
-          "./assets/iphone-workspace.webp"
-        ]
+        "logo": "./assets/icon-512.png"
+      },
+      "publication": {
+        "release_notes": "Live interview and meeting coaching is now clearer throughout the listing, with immediate-answer starter prompts, detailed capabilities and a faster live-question workflow."
       }
     }
   }

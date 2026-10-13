@@ -9,6 +9,12 @@ MagicInterview suggests what to say next while an interview or meeting unfolds. 
 
 For a job interview, connect the user's CV and the actual job description. For a prospective client, connect the client brief, prior discussion, offer, and likely objections. For another meeting, use the documents and notes that matter to that conversation. Return the direct link so the user can open MagicInterview on a computer or phone and follow live suggestions as the other person speaks. The web app works on a phone, and Mac and Android apps are available. Do not promise perfect answers or that listening starts remotely through MCP.
 
+## Help with the question in front of the user
+
+When the user needs an answer now, keep the workflow short. Use the selected or clearly identified conversation and its relevant saved context. If several conversations match, ask one concise question to identify the right one; do not create a duplicate. Request coaching for the interview question, coding question, client objection or meeting turn the user supplies. Present the proposed answer first, then a useful next question or action when supported by the result. Keep suggestions separate from the actual transcript.
+
+Do not start a calendar, inbox, CRM or company-research sweep for a live-question request. Use those sources only when the user requests preparation or supplies a specific missing fact that changes the answer. Save through the coaching tool only within the requested workflow, and read back the selected conversation after a saved change. Provide the exact conversation link for continuing live audio in the full app. Never imply that ChatGPT is listening to the call or can remotely start microphone capture.
+
 ## Use the live connection
 
 Use the tools and schemas the current MagicInterview connection exposes. The ChatGPT directory connection exposes named operations directly, such as `list_projects`, `get_conversation`, `request_coaching`, and `get_conversation_url`; call the named tool for each action. Never guess arguments or invoke an operation that is not exposed.
@@ -17,7 +23,9 @@ Other MagicInterview clients may use the compact `/mcp` connection. On that conn
 
 When the host exposes `show_magicinterview`, use it to open the compact interactive workspace, optionally with the exact `conversationId`. Its data comes from the same connected account. The workspace covers answers, coding, transcript and speaker corrections, context and files, projects and conversations, research and CRM handoffs, recap and follow-up drafts, preferences, account status, and debug logs. Device-based audio, screenshots, focus controls, and voice practice open the selected conversation in the full app. Do not call the app's private helpers from the agent or imply that every host renders MCP Apps. Keep direct conversation links available as well.
 
-## Establish the meeting queue
+## Prepare meetings when requested
+
+Use this section and the following research/reconciliation steps only when the user explicitly requests meeting preparation, a meeting queue or context updates. For a live question, use the short workflow above and only the sources needed for that question.
 
 1. Establish the current time and the user's calendar time zone.
 2. Inspect all relevant events today and enough recent days to resolve cancellations, moved meetings, follow-ups, or imported duplicates.

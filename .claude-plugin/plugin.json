@@ -1,8 +1,8 @@
 {
   "name": "magicinterview",
   "displayName": "MagicInterview",
-  "version": "1.3.0",
-  "description": "Get live AI suggestions for what to say in job interviews, sales calls, and meetings, tailored to your CV, job description, client brief, and notes.",
+  "version": "1.4.0",
+  "description": "Know what to say next in live interviews and meetings. Get clear answers and next-step guidance grounded in your CV, job description, client brief and notes.",
   "author": {
     "name": "Sami Halawa",
     "email": "support@magicinterview.ai",
@@ -12,7 +12,7 @@
   "icon": "https://raw.githubusercontent.com/samihalawa/magicinterview-plugin/main/assets/icon-512.png",
   "privacyPolicyUrl": "https://magicinterview.ai/privacy",
   "termsOfServiceUrl": "https://magicinterview.ai/terms",
-  "supportUrl": "https://magicinterview.ai/contact",
+  "supportUrl": "https://magicinterview.ai/how-it-works#contact",
   "documentationUrl": "https://github.com/samihalawa/magicinterview-plugin#readme",
   "repository": "https://github.com/samihalawa/magicinterview-plugin",
   "license": "MIT",
