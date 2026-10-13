@@ -1,0 +1,20 @@
+{
+  "version": "1.4.0",
+  "observedAt": "2026-10-13T10:44:59Z",
+  "sourceCommit": "68edd54be1475bd7376bd846aff5bcdfea5dac7c",
+  "packageSha256": "e5aafd5ddf17465674951b9b8c3162fdc1aee5cd4a5c031351d61e4bc57746c6",
+  "githubReleaseUrl": "https://github.com/samihalawa/magicinterview-plugin/releases/tag/v1.4.0",
+  "pluginId": "plugin_asdk_app_6abab8682c508191ba77499620af8241",
+  "submissionId": "appsub_6ace06e2e6dc819198b03fa993d26126",
+  "submissionUrl": "https://platform.openai.com/plugins/manage/plugin_asdk_app_6abab8682c508191ba77499620af8241?tab=details&version=appsub_6ace06e2e6dc819198b03fa993d26126",
+  "reviewStatus": "In review",
+  "publicationStatus": "Not published",
+  "directoryUrl": null,
+  "serverCommit": "81e13e9f37a93d4d47702639f00f567f190a4073",
+  "deploymentId": "g10gebyqe4y0w4kpihebzp1z",
+  "deploymentStatus": "finished",
+  "mcpEndpoint": "https://magicinterview.ai/mcp?toolset=directory",
+  "mcpToolCount": 43,
+  "latestMcpScanFindings": 0,
+  "skillChecks": "passed"
+}
