@@ -1,0 +1,18 @@
+{
+  "identifier": "samihalawa-magicinterview-plugin",
+  "name": "MagicInterview",
+  "version": "1.4.0",
+  "author": "Sami Halawa",
+  "authorUrl": "https://github.com/samihalawa",
+  "category": "productivity",
+  "cloudEndpoint": "https://magicinterview.ai/mcp",
+  "description": "Prepare interviews and meetings, manage conversation context, and request coaching. Open MagicInterview for live audio suggestions on what to say next.",
+  "homepage": "https://magicinterview.ai",
+  "icon": "https://raw.githubusercontent.com/samihalawa/magicinterview-plugin/v1.4.0/assets/icon-512.png",
+  "tags": [
+    "interviews",
+    "meetings",
+    "coaching",
+    "productivity"
+  ]
+}
