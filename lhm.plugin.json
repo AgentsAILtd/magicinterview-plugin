@@ -14,5 +14,468 @@
     "meetings",
     "coaching",
     "productivity"
-  ]
+  ],
+  "tools": [
+    {
+      "name": "get_profile",
+      "title": "MagicInterview profile",
+      "description": "Return the MagicInterview account represented by this connection. The opaque id stays stable across reconnects and token refreshes.",
+      "inputSchema": {
+        "type": "object",
+        "properties": {},
+        "additionalProperties": false
+      },
+      "outputSchema": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "minLength": 1,
+            "pattern": "\\S"
+          },
+          "name": {
+            "type": "string"
+          },
+          "email": {
+            "type": "string"
+          },
+          "nickname": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "id"
+        ],
+        "additionalProperties": false
+      },
+      "annotations": {
+        "title": "MagicInterview profile",
+        "readOnlyHint": true,
+        "destructiveHint": false,
+        "idempotentHint": true,
+        "openWorldHint": false
+      },
+      "securitySchemes": [
+        {
+          "type": "oauth2",
+          "scopes": [
+            "magicinterview:read",
+            "magicinterview:write"
+          ]
+        }
+      ],
+      "_meta": {
+        "securitySchemes": [
+          {
+            "type": "oauth2",
+            "scopes": [
+              "magicinterview:read",
+              "magicinterview:write"
+            ]
+          }
+        ],
+        "openai/profile": true
+      }
+    },
+    {
+      "name": "get_tool_catalog",
+      "title": "MagicInterview tool catalog",
+      "description": "Browse available MagicInterview operations by category, with exact names, descriptions, and read/write annotations.",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "categories": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "enum": [
+                "SYSTEM",
+                "PROJECT",
+                "CONVERSATION",
+                "CONTEXT",
+                "COACH",
+                "ACCOUNT",
+                "DEBUG",
+                "NAVIGATION"
+              ]
+            },
+            "maxItems": 8
+          }
+        },
+        "additionalProperties": false
+      },
+      "annotations": {
+        "title": "MagicInterview tool catalog",
+        "readOnlyHint": true,
+        "destructiveHint": false,
+        "idempotentHint": true,
+        "openWorldHint": false
+      },
+      "securitySchemes": [
+        {
+          "type": "oauth2",
+          "scopes": [
+            "magicinterview:read",
+            "magicinterview:write"
+          ]
+        }
+      ],
+      "_meta": {
+        "securitySchemes": [
+          {
+            "type": "oauth2",
+            "scopes": [
+              "magicinterview:read",
+              "magicinterview:write"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "name": "learn_tools",
+      "title": "Learn MagicInterview operations",
+      "description": "Retrieve descriptions, read/write annotations, and input schemas for a batch of exact MagicInterview operation names from the catalog.",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "toolNames": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "minLength": 1
+            },
+            "minItems": 1,
+            "maxItems": 25
+          },
+          "aspects": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "enum": [
+                "description",
+                "schema"
+              ]
+            },
+            "minItems": 1,
+            "maxItems": 2,
+            "default": [
+              "description",
+              "schema"
+            ]
+          }
+        },
+        "required": [
+          "toolNames"
+        ],
+        "additionalProperties": false
+      },
+      "annotations": {
+        "title": "Learn MagicInterview operations",
+        "readOnlyHint": true,
+        "destructiveHint": false,
+        "idempotentHint": true,
+        "openWorldHint": false
+      },
+      "securitySchemes": [
+        {
+          "type": "oauth2",
+          "scopes": [
+            "magicinterview:read",
+            "magicinterview:write"
+          ]
+        }
+      ],
+      "_meta": {
+        "securitySchemes": [
+          {
+            "type": "oauth2",
+            "scopes": [
+              "magicinterview:read",
+              "magicinterview:write"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "name": "read_tool",
+      "title": "Read MagicInterview data",
+      "description": "Run one cataloged read-only MagicInterview operation with its schema-defined arguments. Accepts only operations annotated readOnlyHint: true and never changes workspace data.",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "toolName": {
+            "type": "string",
+            "minLength": 1
+          },
+          "arguments": {
+            "type": "object",
+            "additionalProperties": true,
+            "default": {}
+          }
+        },
+        "required": [
+          "toolName"
+        ],
+        "additionalProperties": false
+      },
+      "annotations": {
+        "title": "Read MagicInterview data",
+        "readOnlyHint": true,
+        "destructiveHint": false,
+        "idempotentHint": true,
+        "openWorldHint": false
+      },
+      "securitySchemes": [
+        {
+          "type": "oauth2",
+          "scopes": [
+            "magicinterview:read",
+            "magicinterview:write"
+          ]
+        }
+      ],
+      "_meta": {
+        "securitySchemes": [
+          {
+            "type": "oauth2",
+            "scopes": [
+              "magicinterview:read",
+              "magicinterview:write"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "name": "execute_tool",
+      "title": "Change MagicInterview data",
+      "description": "Run one cataloged MagicInterview write operation with its schema-defined arguments. Accepts only operations annotated readOnlyHint: false, including explicitly requested deletions.",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "toolName": {
+            "type": "string",
+            "minLength": 1
+          },
+          "arguments": {
+            "type": "object",
+            "additionalProperties": true,
+            "default": {}
+          }
+        },
+        "required": [
+          "toolName"
+        ],
+        "additionalProperties": false
+      },
+      "annotations": {
+        "title": "Change MagicInterview data",
+        "readOnlyHint": false,
+        "destructiveHint": true,
+        "idempotentHint": false,
+        "openWorldHint": true
+      },
+      "securitySchemes": [
+        {
+          "type": "oauth2",
+          "scopes": [
+            "magicinterview:read",
+            "magicinterview:write"
+          ]
+        }
+      ],
+      "_meta": {
+        "securitySchemes": [
+          {
+            "type": "oauth2",
+            "scopes": [
+              "magicinterview:read",
+              "magicinterview:write"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "name": "show_magicinterview",
+      "title": "Open MagicInterview",
+      "description": "Open your compact MagicInterview workspace: what to say next, coding help, projects, conversations, sources, transcripts and preferences. Uses this connected account's saved data. Live audio and voice practice open in the full app.",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "conversationId": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 100
+          }
+        },
+        "additionalProperties": false
+      },
+      "annotations": {
+        "readOnlyHint": true,
+        "destructiveHint": false,
+        "idempotentHint": true,
+        "openWorldHint": false
+      },
+      "securitySchemes": [
+        {
+          "type": "oauth2",
+          "scopes": [
+            "magicinterview:read",
+            "magicinterview:write"
+          ]
+        }
+      ],
+      "_meta": {
+        "securitySchemes": [
+          {
+            "type": "oauth2",
+            "scopes": [
+              "magicinterview:read",
+              "magicinterview:write"
+            ]
+          }
+        ],
+        "ui": {
+          "resourceUri": "ui://magicinterview/workspace-v1.html"
+        },
+        "ui/resourceUri": "ui://magicinterview/workspace-v1.html",
+        "openai/outputTemplate": "ui://magicinterview/workspace-v1.html",
+        "openai/widgetAccessible": true
+      }
+    },
+    {
+      "name": "magicinterview_app_read",
+      "title": "Read workspace",
+      "description": "Read one schema-validated, account-scoped MagicInterview operation from the app.",
+      "inputSchema": {
+        "$schema": "http://json-schema.org/draft-07/schema#",
+        "type": "object",
+        "properties": {
+          "toolName": {
+            "type": "string",
+            "minLength": 1
+          },
+          "arguments": {
+            "default": {},
+            "type": "object",
+            "propertyNames": {
+              "type": "string"
+            },
+            "additionalProperties": {}
+          }
+        },
+        "required": [
+          "toolName",
+          "arguments"
+        ],
+        "additionalProperties": false
+      },
+      "annotations": {
+        "readOnlyHint": true,
+        "destructiveHint": false,
+        "idempotentHint": true,
+        "openWorldHint": false
+      },
+      "securitySchemes": [
+        {
+          "type": "oauth2",
+          "scopes": [
+            "magicinterview:read",
+            "magicinterview:write"
+          ]
+        }
+      ],
+      "_meta": {
+        "securitySchemes": [
+          {
+            "type": "oauth2",
+            "scopes": [
+              "magicinterview:read",
+              "magicinterview:write"
+            ]
+          }
+        ],
+        "ui": {
+          "visibility": [
+            "app"
+          ]
+        },
+        "openai/widgetAccessible": true,
+        "openai/visibility": "private"
+      }
+    },
+    {
+      "name": "magicinterview_app_write",
+      "title": "Save workspace changes",
+      "description": "Perform one schema-validated MagicInterview change requested in the app.",
+      "inputSchema": {
+        "$schema": "http://json-schema.org/draft-07/schema#",
+        "type": "object",
+        "properties": {
+          "toolName": {
+            "type": "string",
+            "minLength": 1
+          },
+          "arguments": {
+            "default": {},
+            "type": "object",
+            "propertyNames": {
+              "type": "string"
+            },
+            "additionalProperties": {}
+          }
+        },
+        "required": [
+          "toolName",
+          "arguments"
+        ],
+        "additionalProperties": false
+      },
+      "annotations": {
+        "readOnlyHint": false,
+        "destructiveHint": true,
+        "idempotentHint": false,
+        "openWorldHint": true
+      },
+      "securitySchemes": [
+        {
+          "type": "oauth2",
+          "scopes": [
+            "magicinterview:read",
+            "magicinterview:write"
+          ]
+        }
+      ],
+      "_meta": {
+        "securitySchemes": [
+          {
+            "type": "oauth2",
+            "scopes": [
+              "magicinterview:read",
+              "magicinterview:write"
+            ]
+          }
+        ],
+        "ui": {
+          "visibility": [
+            "app"
+          ]
+        },
+        "openai/widgetAccessible": true,
+        "openai/visibility": "private"
+      }
+    }
+  ],
+  "resources": [
+    {
+      "name": "MagicInterview workspace",
+      "uri": "ui://magicinterview/workspace-v1.html",
+      "mimeType": "text/html;profile=mcp-app",
+      "description": "Compact account-connected MagicInterview workspace."
+    }
+  ],
+  "prompts": []
 }
