@@ -14,5 +14,14 @@
       "type": "streamable-http",
       "url": "https://magicinterview.ai/mcp"
     }
+  ],
+  "icons": [
+    {
+      "src": "https://raw.githubusercontent.com/samihalawa/magicinterview-plugin/v1.4.0/assets/icon-512.png",
+      "mimeType": "image/png",
+      "sizes": [
+        "512x512"
+      ]
+    }
   ]
 }

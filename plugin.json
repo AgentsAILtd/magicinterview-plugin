@@ -51,11 +51,16 @@
         "termsOfServiceURL": "https://magicinterview.ai/terms",
         "brandColor": "#7795EB",
         "composerIcon": "./assets/icon-192.png",
-        "logo": "./assets/icon-512.png"
+        "logo": "./assets/icon-512.png",
+        "screenshots": [
+          "./assets/assistant-workspace.jpg"
+        ]
       },
       "publication": {
         "release_notes": "Live interview and meeting coaching is now clearer throughout the listing, with immediate-answer starter prompts, detailed capabilities and a faster live-question workflow."
-      }
+      },
+      "onboardingSkill": "./skills/get-started/SKILL.md"
     }
-  }
+  },
+  "logo": "./assets/icon-512.png"
 }

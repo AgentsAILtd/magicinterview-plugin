@@ -11,6 +11,8 @@ For a job interview, connect the user's CV and the actual job description. For a
 
 ## First use, connection and Pro
 
+For a new user asking how to begin, follow [the focused get-started guide](../get-started/SKILL.md); keep urgent questions on the short workflow below.
+
 A user may have installed this plugin without knowing MagicInterview or having an account. Explain only what they need for the next step: it saves their CV, job or meeting brief and conversation context so they can prepare with an assistant and continue in the full app. The account, assistant connection and saved workspace are free; cloud coaching and AI tools require Pro. Live audio capture runs in the full MagicInterview app.
 
 | Current state | Next useful action | Evidence to continue |

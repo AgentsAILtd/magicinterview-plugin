@@ -4,6 +4,10 @@
 
 MagicInterview helps you know what to say next in interviews and meetings. In the full MagicInterview app, start live listening to receive suggested responses as the conversation happens. Through the connected AI workspace, add your CV, job description, client brief and notes, then get context-grounded answers and prepare the conversation.
 
+![MagicInterview: una respuesta sugerida dentro del espacio del asistente](assets/assistant-workspace.jpg)
+
+*Espacio del asistente · contenido ficticio de demostración. El audio en directo se abre en la app completa. / Assistant workspace · fictional demo content. Live audio opens in the full app.*
+
 ## Empieza aquí · Start here
 
 **¿Es tu primera vez?** MagicInterview te ayuda a saber qué decir en una entrevista o reunión. Puedes probar una preparación antes de crear una cuenta. La cuenta, la conexión con tu asistente y el espacio donde guardas tu CV, ofertas y notas son gratuitos. El coaching en la nube y las herramientas de IA requieren Pro.
