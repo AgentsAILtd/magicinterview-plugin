@@ -6,7 +6,7 @@
   "authorUrl": "https://github.com/samihalawa",
   "category": "productivity",
   "cloudEndpoint": "https://magicinterview.ai/mcp",
-  "description": "Prepare interviews and meetings, manage conversation context, and request coaching. Open MagicInterview for live audio suggestions on what to say next.",
+  "description": "Know what to say next in interviews and meetings. Free account and saved workspace; Pro cloud coaching. Live audio runs in the full app.",
   "homepage": "https://magicinterview.ai",
   "icon": "https://raw.githubusercontent.com/samihalawa/magicinterview-plugin/v1.4.0/assets/icon-512.png",
   "tags": [

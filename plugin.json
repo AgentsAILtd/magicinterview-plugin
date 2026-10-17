@@ -2,7 +2,7 @@
   "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
   "name": "magicinterview",
   "version": "1.4.0",
-  "description": "Know what to say next in live interviews and meetings. Get clear answers and next-step guidance grounded in your CV, job description, client brief and notes.",
+  "description": "Know what to say next in interviews and meetings. Free account and saved workspace; Pro cloud coaching. Live audio runs in the full app.",
   "author": {
     "name": "Sami Halawa",
     "email": "support@magicinterview.ai",
@@ -30,7 +30,7 @@
       "interface": {
         "displayName": "MagicInterview",
         "shortDescription": "Live help: what to say next",
-        "longDescription": "Know what to say next when an interview question lands, a client raises an objection, or a meeting takes an unexpected turn. MagicInterview turns the current question and your own context into a clear response you can use or adapt.\n\nGet live help for job interviews, technical discussions, client calls, sales conversations and meetings. Bring your CV, job description, client brief or notes so suggestions reflect your experience, goals and the conversation.\n\nIn ChatGPT, open your connected MagicInterview workspace, choose a conversation and share the question or meeting turn you need help with. Get a concise answer, coding guidance or a useful next question. Save the coaching alongside your conversation and reuse the same context when the discussion continues.\n\nPrepare the right conversation before your call, then open it in the full MagicInterview app on your computer or phone for live audio coaching, readable answers and voice practice. Live audio capture runs in MagicInterview; the ChatGPT workspace works with the text and saved context you provide.\n\nConnect your MagicInterview account to get started.",
+        "longDescription": "Know what to say next when an interview question lands, a client raises an objection, or a meeting takes an unexpected turn. MagicInterview turns the current question and your own context into a clear response you can use or adapt.\n\nGet live help for job interviews, technical discussions, client calls, sales conversations and meetings. Bring your CV, job description, client brief or notes so suggestions reflect your experience, goals and the conversation.\n\nIn ChatGPT, open your connected MagicInterview workspace, choose a conversation and share the question or meeting turn you need help with. Get a concise answer, coding guidance or a useful next question. Save the coaching alongside your conversation and reuse the same context when the discussion continues.\n\nPrepare the right conversation before your call, then open it in the full MagicInterview app on your computer or phone for live audio coaching, readable answers and voice practice. Live audio capture runs in MagicInterview; the ChatGPT workspace works with the text and saved context you provide.\n\nNew here? Create a free MagicInterview account when your assistant asks to connect, approve access in your browser and return to the assistant. Save your CV, job details or brief and prepare your first conversation. No card is required for your free account, assistant connection or saved workspace.\n\nCloud coaching and AI tools require MagicInterview Pro. If a coaching request needs Pro, open the upgrade link, choose a plan and return to the same question after upgrading. For live audio, open the conversation in the full MagicInterview app. You can try a preparation preview before registering at https://magicinterview.ai/interview-tomorrow.",
         "developerName": "Agents AI",
         "category": "Productivity",
         "capabilities": [
@@ -40,15 +40,15 @@
           "Get coding help grounded in the current question and saved context",
           "Save conversation turns, coaching answers and reusable meeting context"
         ],
-        "websiteURL": "https://magicinterview.ai",
-        "supportURL": "https://magicinterview.ai/how-it-works#contact",
-        "privacyPolicyURL": "https://magicinterview.ai/privacy",
-        "termsOfServiceURL": "https://magicinterview.ai/terms",
         "defaultPrompt": [
           "Help me answer this interview question now. Use my CV and job description to suggest a clear response I can say aloud.",
           "A client just raised an objection. Use my meeting brief to suggest what to say next and one useful follow-up question.",
-          "Open my MagicInterview workspace and prepare my next meeting with a concise brief and context for live answers."
+          "I am new to MagicInterview. Help me save my CV and job details and prepare my first conversation before AI coaching."
         ],
+        "websiteURL": "https://magicinterview.ai/",
+        "supportURL": "https://magicinterview.ai/how-it-works#contact",
+        "privacyPolicyURL": "https://magicinterview.ai/privacy",
+        "termsOfServiceURL": "https://magicinterview.ai/terms",
         "brandColor": "#7795EB",
         "composerIcon": "./assets/icon-192.png",
         "logo": "./assets/icon-512.png"

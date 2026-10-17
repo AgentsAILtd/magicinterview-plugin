@@ -9,6 +9,19 @@ MagicInterview suggests what to say next while an interview or meeting unfolds. 
 
 For a job interview, connect the user's CV and the actual job description. For a prospective client, connect the client brief, prior discussion, offer, and likely objections. For another meeting, use the documents and notes that matter to that conversation. Return the direct link so the user can open MagicInterview on a computer or phone and follow live suggestions as the other person speaks. The web app works on a phone, and Mac and Android apps are available. Do not promise perfect answers or that listening starts remotely through MCP.
 
+## First use, connection and Pro
+
+A user may have installed this plugin without knowing MagicInterview or having an account. Explain only what they need for the next step: it saves their CV, job or meeting brief and conversation context so they can prepare with an assistant and continue in the full app. The account, assistant connection and saved workspace are free; cloud coaching and AI tools require Pro. Live audio capture runs in the full MagicInterview app.
+
+| Current state | Next useful action | Evidence to continue |
+| --- | --- | --- |
+| Not connected, or authentication required | Use the host's supported connect/reconnect flow. In the browser the user can create a free account or sign in, approve access and return. If no connection control is available, give the host's setup instructions and the endpoint `https://magicinterview.ai/mcp`; do not invent an authentication tool. | A successful account-scoped read, not plugin installation or a sign-in link alone. |
+| Connected with no projects or conversations | Ask for the interview, role or meeting context needed for the requested task. Check for an existing matching conversation, then create the first relevant project/conversation only within the user's request and attach the supplied context. No pre-existing CV, calendar or CRM connection is required. | Read back the created conversation and return its exact URL. |
+| Free workspace ready | Show what was saved and the next useful action. Preparation and workspace management do not require a coaching call. For a preview before registering, offer `https://magicinterview.ai/interview-tomorrow`. | Distinguish saved context from an AI-generated coaching answer. |
+| Coaching returns `PRO_REQUIRED` | Preserve the user's question and selected conversation. Explain that cloud coaching requires Pro and offer the canonical `upgradeUrl` returned by the server. If that field is absent, use `https://magicinterview.ai/app?auth=sign-up&returnTo=pro`. Let the user choose; do not repeatedly call the gated tool or require Pro for free workspace work. | After the user says they upgraded, retry the requested coaching call once; only a successful server response proves access. A checkout visit or return does not. |
+
+Keep the first-use path proportional. For an urgent live question, use existing context immediately when available; do not force a new onboarding tour, account explanation, research sweep or purchase flow. If authentication or Pro blocks the request, state the exact next step while retaining the question. Never claim account creation, authorization, a saved change or paid access without its corresponding result. Never ask for a password or token in chat.
+
 ## Help with the question in front of the user
 
 When the user needs an answer now, keep the workflow short. Use the selected or clearly identified conversation and its relevant saved context. If several conversations match, ask one concise question to identify the right one; do not create a duplicate. Request coaching for the interview question, coding question, client objection or meeting turn the user supplies. Present the proposed answer first, then a useful next question or action when supported by the result. Keep suggestions separate from the actual transcript.
