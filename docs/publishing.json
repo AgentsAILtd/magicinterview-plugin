@@ -56,16 +56,22 @@
   },
   "officialMcpRegistry": {
     "serverName": "io.github.samihalawa/magicinterview",
-    "lastVerifiedActiveVersion": "1.4.1",
+    "lastVerifiedActiveVersion": "1.4.3",
     "version1_4_2": {
-      "status": "unknown",
-      "publishResponse": "504 Gateway Time-out",
-      "readBack": "timed out"
+      "status": "not found",
+      "readBackHttpStatus": 404,
+      "readBackUrl": "https://registry.modelcontextprotocol.io/v0.1/servers/io.github.samihalawa%2Fmagicinterview/versions/1.4.2",
+      "priorPublishResponse": "504 Gateway Time-out"
     },
     "version1_4_3": {
-      "status": "not attempted",
-      "reason": "Registry remained unavailable during exact-version health read-back."
-    }
+      "status": "active",
+      "isLatest": true,
+      "publishedAt": "2026-10-21T09:39:36.560747Z",
+      "readBackHttpStatus": 200,
+      "readBackUrl": "https://registry.modelcontextprotocol.io/v0.1/servers/io.github.samihalawa%2Fmagicinterview/versions/1.4.3"
+    },
+    "previousVerifiedActiveVersion": "1.4.1",
+    "transportRecovery": "Intermittent connectivity affected Registry reads and CLI TLS handshakes. The official GitHub-token exchange succeeded over Python HTTPS, refreshed the existing publisher token store, and the normal CLI publish then succeeded. No sole provider root cause was established."
   },
   "previousRecord": {
     "provenance": "Historical receipt for the previous plugin record. Parent controller reports that old record was deleted before the fresh submission. These identifiers are not the current submission.",
