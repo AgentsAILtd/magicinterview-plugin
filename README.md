@@ -54,6 +54,10 @@ This plugin connects your AI assistant to your MagicInterview workspace so it ca
 
 Your assistant sets up the context and opens the right conversation. Start listening in the MagicInterview app when you are ready for live suggestions.
 
+
+
+**Notion notes and meeting sync:** Connect Notion from Workspace → Notion on the web to import shared pages as reusable sources, or enable optional meeting sync. With meeting sync enabled, keep your brief in Notion and bring transcripts and saved coaching back to your notes. [Set up Notion](https://magicinterview.ai/guides/connect-notion). Setup and sync management use the web app; saved sources stay available across signed-in devices.
+
 ## A compact workspace inside your assistant
 
 In compatible MCP App hosts, ask to open MagicInterview. The interactive workspace uses your connected account's real projects, conversations, sources, preferences, and saved history—not a separate copy.
