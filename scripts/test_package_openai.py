@@ -36,7 +36,8 @@ class ListingPackageTests(unittest.TestCase):
         members = package_members(data)
         self.assertIn('skills/get-started/SKILL.md', members)
         self.assertIn('assets/assistant-workspace.jpg', members)
-        self.assertEqual(data['interface']['screenshots'], ['./assets/assistant-workspace.jpg'])
+        self.assertEqual(data['interface']['screenshots'], ['./assets/assistant-workspace.jpg', './assets/notion-meeting-sync.jpg'])
+        self.assertIn('assets/notion-meeting-sync.jpg', members)
         self.assertEqual(image_dimensions((root / 'assets/assistant-workspace.jpg').read_bytes()), (1280, 886))
         self.assertEqual(image_dimensions((root / 'assets/mac-coach.webp').read_bytes()), (1600, 1000))
 

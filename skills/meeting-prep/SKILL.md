@@ -38,6 +38,12 @@ Other MagicInterview clients may use the compact `/mcp` connection. On that conn
 
 When the host exposes `show_magicinterview`, use it to open the compact interactive workspace, optionally with the exact `conversationId`. Its data comes from the same connected account. The workspace covers answers, coding, transcript and speaker corrections, context and files, projects and conversations, research and CRM handoffs, recap and follow-up drafts, preferences, account status, and debug logs. Device-based audio, screenshots, focus controls, and voice practice open the selected conversation in the full app. Do not call the app's private helpers from the agent or imply that every host renders MCP Apps. Keep direct conversation links available as well.
 
+## Notion context and optional meeting sync
+
+When the user keeps preparation in Notion, discover the exposed Notion operations and read connection and sync status first. An authorized individual import saves a reusable source; importing the same page updates it. Attach only the relevant source to the intended project or conversation. Do not infer ongoing sync from a successful import.
+
+Optional meeting sync is a separate configuration: it creates a MagicInterview home with Projects and Meetings inside the selected shared parent page. Notion Brief edits become conversation context; MagicInterview sends managed meeting details, transcripts and saved coaching back to Notion. Use the requested all-project or selected-project scope, preserve other notes, and read back the resulting status. If page access or read/insert/update permissions are missing, link to [Workspace → Notion](https://magicinterview.ai/app/workspace/notion) to connect or reconnect in the browser. Never ask for Notion tokens in chat or claim the integration connected without a successful result.
+
 ## Prepare meetings when requested
 
 Use this section and the following research/reconciliation steps only when the user explicitly requests meeting preparation, a meeting queue or context updates. For a live question, use the short workflow above and only the sources needed for that question.

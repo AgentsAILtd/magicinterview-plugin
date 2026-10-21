@@ -2,13 +2,13 @@
   "$schema": "https://static.modelcontextprotocol.io/schemas/2025-12-11/server.schema.json",
   "name": "io.github.samihalawa/magicinterview",
   "title": "MagicInterview",
-  "description": "Prepare interviews with a free workspace. Pro cloud coaching; live audio in the full app.",
+  "description": "Live interview and meeting coaching with saved context and Notion sync. Audio runs in the full app.",
   "websiteUrl": "https://magicinterview.ai",
   "repository": {
     "url": "https://github.com/samihalawa/magicinterview-plugin",
     "source": "github"
   },
-  "version": "1.4.0",
+  "version": "1.4.1",
   "remotes": [
     {
       "type": "streamable-http",

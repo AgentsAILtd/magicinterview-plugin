@@ -1,12 +1,12 @@
 {
   "identifier": "samihalawa-magicinterview-plugin",
   "name": "MagicInterview",
-  "version": "1.4.0",
+  "version": "1.4.1",
   "author": "Sami Halawa",
   "authorUrl": "https://github.com/samihalawa",
   "category": "productivity",
   "cloudEndpoint": "https://magicinterview.ai/mcp",
-  "description": "Know what to say next in interviews and meetings. Free account and saved workspace; Pro cloud coaching. Live audio runs in the full app.",
+  "description": "Know what to say next in interviews and meetings. Bring CV context and Notion notes; free workspace, Pro cloud coaching. Live audio runs in the full app.",
   "homepage": "https://magicinterview.ai",
   "icon": "https://raw.githubusercontent.com/samihalawa/magicinterview-plugin/v1.4.0/assets/icon-512.png",
   "tags": [

@@ -1,8 +1,8 @@
 {
   "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
   "name": "magicinterview",
-  "version": "1.4.0",
-  "description": "Know what to say next in interviews and meetings. Free account and saved workspace; Pro cloud coaching. Live audio runs in the full app.",
+  "version": "1.4.1",
+  "description": "Know what to say next in interviews and meetings. Bring CV context and Notion notes; free workspace, Pro cloud coaching. Live audio runs in the full app.",
   "author": {
     "name": "Sami Halawa",
     "email": "support@magicinterview.ai",
@@ -30,7 +30,7 @@
       "interface": {
         "displayName": "MagicInterview",
         "shortDescription": "Live help: what to say next",
-        "longDescription": "Know what to say next when an interview question lands, a client raises an objection, or a meeting takes an unexpected turn. MagicInterview turns the current question and your own context into a clear response you can use or adapt.\n\nGet live help for job interviews, technical discussions, client calls, sales conversations and meetings. Bring your CV, job description, client brief or notes so suggestions reflect your experience, goals and the conversation.\n\nIn ChatGPT, open your connected MagicInterview workspace, choose a conversation and share the question or meeting turn you need help with. Get a concise answer, coding guidance or a useful next question. Save the coaching alongside your conversation and reuse the same context when the discussion continues.\n\nPrepare the right conversation before your call, then open it in the full MagicInterview app on your computer or phone for live audio coaching, readable answers and voice practice. Live audio capture runs in MagicInterview; the ChatGPT workspace works with the text and saved context you provide.\n\nNew here? Create a free MagicInterview account when your assistant asks to connect, approve access in your browser and return to the assistant. Save your CV, job details or brief and prepare your first conversation. No card is required for your free account, assistant connection or saved workspace.\n\nCloud coaching and AI tools require MagicInterview Pro. If a coaching request needs Pro, open the upgrade link, choose a plan and return to the same question after upgrading. For live audio, open the conversation in the full MagicInterview app. You can try a preparation preview before registering at https://magicinterview.ai/interview-tomorrow.",
+        "longDescription": "Know what to say next when an interview question lands, a client raises an objection, or a meeting takes an unexpected turn. MagicInterview turns the current question and your own context into a clear response you can use or adapt.\n\nGet live help for job interviews, technical discussions, client calls, sales conversations and meetings. Bring your CV, job description, client brief or notes so suggestions reflect your experience, goals and the conversation.\n\nIn ChatGPT, open your connected MagicInterview workspace, choose a conversation and share the question or meeting turn you need help with. Get a concise answer, coding guidance or a useful next question. Save the coaching alongside your conversation and reuse the same context when the discussion continues.\n\nKeep preparation and follow-up together with Notion. Connect Notion in Workspace → Notion on the web to import selected pages as reusable context or enable optional meeting sync. Edit a meeting’s brief in Notion; MagicInterview updates its meeting details, transcript and saved coaching without replacing your other notes. Notion setup uses browser authorization, not an API key.\n\nPrepare the right conversation before your call, then open it in the full MagicInterview app on your computer or phone for live audio coaching, readable answers and voice practice. Live audio capture runs in MagicInterview; the ChatGPT workspace works with the text and saved context you provide.\n\nNew here? Create a free MagicInterview account when your assistant asks to connect, approve access in your browser and return to the assistant. Save your CV, job details or brief and prepare your first conversation. No card is required for your free account, assistant connection or saved workspace.\n\nCloud coaching and AI tools require MagicInterview Pro. If a coaching request needs Pro, open the upgrade link, choose a plan and return to the same question after upgrading. For live audio, open the conversation in the full MagicInterview app. You can try a preparation preview before registering at https://magicinterview.ai/interview-tomorrow.",
         "developerName": "Agents AI",
         "category": "Productivity",
         "capabilities": [
@@ -38,7 +38,8 @@
           "Prepare interviews and calls with CVs, job descriptions, briefs and notes",
           "Open and manage your MagicInterview conversations inside ChatGPT",
           "Get coding help grounded in the current question and saved context",
-          "Save conversation turns, coaching answers and reusable meeting context"
+          "Save conversation turns, coaching answers and reusable meeting context",
+          "Import Notion pages and manage optional meeting sync for briefs, transcripts and saved coaching"
         ],
         "defaultPrompt": [
           "Help me answer this interview question now. Use my CV and job description to suggest a clear response I can say aloud.",
@@ -53,11 +54,18 @@
         "composerIcon": "./assets/icon-192.png",
         "logo": "./assets/icon-512.png",
         "screenshots": [
-          "./assets/assistant-workspace.jpg"
+          "./assets/assistant-workspace.jpg",
+          "./assets/notion-meeting-sync.jpg"
         ]
       },
       "publication": {
-        "release_notes": "Live interview and meeting coaching is now clearer throughout the listing, with immediate-answer starter prompts, detailed capabilities and a faster live-question workflow."
+        "release_notes": "Notion page import and optional meeting sync are now explained in the listing and onboarding, with a real sync-control screenshot. Free-workspace, Pro and full-app live-audio boundaries remain explicit.",
+        "translations": {
+          "es-ES": {
+            "subtitle": "Qué decir en cada conversación",
+            "description": "Sabe qué decir cuando llega una pregunta de entrevista, una objeción de un cliente o un giro inesperado en una reunión. MagicInterview usa tu CV, la oferta de trabajo, el resumen del cliente y tus notas para ayudarte a preparar una respuesta clara.\n\nEn ChatGPT, conecta tu cuenta de MagicInterview, elige una conversación y comparte la pregunta o el fragmento de texto. Puedes trabajar con tus proyectos y fuentes, pedir orientación y guardar respuestas junto a la conversación.\n\nTambién puedes conectar Notion desde Workspace → Notion en la web: importa páginas como fuentes o activa la sincronización opcional de reuniones. Edita el resumen en Notion y consulta allí la transcripción y las respuestas guardadas.\n\nLa cuenta, la conexión del asistente y el espacio guardado son gratuitos. No necesitas tarjeta para crear una cuenta. El coaching en la nube y las herramientas de IA requieren MagicInterview Pro.\n\nPara escuchar audio en directo y ver sugerencias durante una llamada, abre esa misma conversación en la app completa de MagicInterview. ChatGPT trabaja con el texto y el contexto guardado que compartes; no escucha tu llamada. Puedes probar una preparación sin cuenta en https://magicinterview.ai/interview-tomorrow."
+          }
+        }
       },
       "onboardingSkill": "./skills/get-started/SKILL.md"
     }
