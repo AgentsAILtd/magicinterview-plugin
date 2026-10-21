@@ -3,8 +3,11 @@ import json
 from pathlib import Path
 import shutil
 import struct
+import subprocess
+import sys
 import tempfile
 import unittest
+import zipfile
 
 from package_openai import image_dimensions, package_members, root, validate_metadata, validate_screenshot
 
@@ -40,6 +43,19 @@ class ListingPackageTests(unittest.TestCase):
         self.assertIn('assets/notion-meeting-sync.jpg', members)
         self.assertEqual(image_dimensions((root / 'assets/assistant-workspace.jpg').read_bytes()), (1280, 886))
         self.assertEqual(image_dimensions((root / 'assets/mac-coach.webp').read_bytes()), (1600, 1000))
+        output = self.directory / 'fresh-upload.zip'
+        subprocess.run([sys.executable, str(root / 'scripts/package_openai.py'), str(output)], check=True, capture_output=True)
+        with zipfile.ZipFile(output) as archive:
+            server = json.loads(archive.read('.mcp.json'))['mcpServers']['magicinterview']
+            self.assertEqual(server['url'], 'https://magicinterview.ai/mcp?toolset=directory')
+            self.assertEqual(server['extensions']['com.openai']['auth'], {'type': 'oauth', 'client': {'mode': 'dcr'}})
+            self.assertNotIn('clientSecret', json.dumps(server))
+            review = json.loads(archive.read('.codex-plugin/plugin.json'))['extensions']['com.openai']['review']
+            self.assertEqual(len(review['test_cases']['positive']), 5)
+            self.assertEqual(len(review['test_cases']['negative']), 3)
+            self.assertEqual(review['demo_recording_url'], 'https://github.com/samihalawa/magicinterview-plugin/releases/download/v1.0.0/magicinterview-review-demo.mp4')
+            self.assertNotIn('test_credentials', review)
+            self.assertNotIn('reviewer_instructions', review)
 
     def test_screenshot_manifest_drift_is_rejected(self):
         self.edit('.codex-plugin/plugin.json', lambda data: data['interface'].update(screenshots=['./assets/mac-coach.webp']))

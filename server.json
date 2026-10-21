@@ -8,7 +8,7 @@
     "url": "https://github.com/samihalawa/magicinterview-plugin",
     "source": "github"
   },
-  "version": "1.4.1",
+  "version": "1.4.2",
   "remotes": [
     {
       "type": "streamable-http",

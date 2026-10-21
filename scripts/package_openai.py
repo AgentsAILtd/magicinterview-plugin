@@ -110,6 +110,16 @@ def validate_metadata(directory):
     assert all(len(prompt) <= 128 and '\n' not in prompt for prompt in listing['defaultPrompt'])
     assert all(len(capability) <= 120 for capability in listing['capabilities'])
     root_openai = manifests['plugin.json']['extensions']['com.openai']
+    review = canonical['extensions']['com.openai'].get('review', {})
+    assert root_openai.get('review', {}) == review, 'OpenAI review metadata copies differ'
+    cases = review.get('test_cases')
+    if cases is not None:
+        assert len(cases.get('positive', [])) == 5 and len(cases.get('negative', [])) == 3, 'Initial review needs five positive and three negative cases'
+        for kind, entries in cases.items():
+            for case in entries:
+                required = ['description', 'prompt'] + (['tools_triggered', 'expected_behavior'] if kind == 'positive' else [])
+                assert all(isinstance(case.get(field), str) and case[field].strip() for field in required), 'Incomplete review case'
+    assert 'test_credentials' not in review and 'reviewer_instructions' not in review, 'Reviewer access must stay in secure portal fields'
     onboarding = canonical['extensions']['com.openai']['onboardingSkill']
     assert root_openai['onboardingSkill'] == onboarding, 'Onboarding skill copies differ'
     assert onboarding.endswith('/SKILL.md'), 'Onboarding must point to SKILL.md'
@@ -124,6 +134,14 @@ def validate_metadata(directory):
     return canonical
 
 
+def openai_mcp_config():
+    # A fresh portal import needs explicit OAuth; endpoint discovery supplies URLs.
+    return {'mcpServers': {'magicinterview': {
+        'url': 'https://magicinterview.ai/mcp?toolset=directory',
+        'extensions': {'com.openai': {'auth': {'type': 'oauth', 'client': {'mode': 'dcr'}}}},
+    }}}
+
+
 def main():
     manifest = validate_metadata(root)
     if sys.argv[1:] == ['--check']:
@@ -135,11 +153,12 @@ def main():
     output = Path(sys.argv[1])
     with zipfile.ZipFile(output, 'w', zipfile.ZIP_DEFLATED) as archive:
         archive.writestr('.codex-plugin/plugin.json', json.dumps(manifest, ensure_ascii=False, indent=2) + '\n')
-        archive.writestr('.mcp.json', json.dumps({'mcpServers': {'magicinterview': {'url': 'https://magicinterview.ai/mcp?toolset=directory'}}}, indent=2) + '\n')
+        archive.writestr('.mcp.json', json.dumps(openai_mcp_config(), indent=2) + '\n')
         for relative in package_members(manifest):
             archive.write(root / relative, relative)
     with zipfile.ZipFile(output) as archive:
         assert json.loads(archive.read('.codex-plugin/plugin.json')) == manifest
+        assert json.loads(archive.read('.mcp.json')) == openai_mcp_config()
         print(json.dumps({'path': str(output), 'version': manifest['version'], 'files': archive.namelist(), 'sha256': hashlib.sha256(output.read_bytes()).hexdigest()}))
 
 
