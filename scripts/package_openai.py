@@ -112,6 +112,16 @@ def validate_metadata(directory):
     root_openai = manifests['plugin.json']['extensions']['com.openai']
     review = canonical['extensions']['com.openai'].get('review', {})
     assert root_openai.get('review', {}) == review, 'OpenAI review metadata copies differ'
+    translations = canonical['extensions']['com.openai'].get('publication', {}).get('translations', {})
+    assert root_openai.get('publication', {}).get('translations', {}) == translations, 'OpenAI translation copies differ'
+    for locale, translation in translations.items():
+        assert isinstance(locale, str) and locale.strip(), 'Empty translation locale'
+        for field, maximum in [('subtitle', 30), ('description', 4000)]:
+            value = translation.get(field)
+            if value is not None:
+                assert isinstance(value, str) and value.strip() and len(value) <= maximum, f'{locale}: invalid {field}'
+                assert not any(ord(char) < 32 and char != '\n' for char in value), f'{locale}: unsupported control character'
+                assert field != 'subtitle' or '\n' not in value, f'{locale}: subtitle must be one line'
     cases = review.get('test_cases')
     if cases is not None:
         assert len(cases.get('positive', [])) == 5 and len(cases.get('negative', [])) == 3, 'Initial review needs five positive and three negative cases'

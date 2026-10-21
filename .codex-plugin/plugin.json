@@ -1,6 +1,6 @@
 {
   "name": "magicinterview",
-  "version": "1.4.2",
+  "version": "1.4.3",
   "description": "Know what to say next in interviews and meetings. Bring CV context and Notion notes. Live audio runs in the full app.",
   "author": {
     "name": "Sami Halawa",
@@ -57,11 +57,39 @@
   "extensions": {
     "com.openai": {
       "publication": {
-        "release_notes": "Clarified Notion preparation workflows and full-app live-audio behavior.",
+        "release_notes": "Added listing text in all nine website languages, with Notion preparation and full-app live-audio guidance.",
         "translations": {
           "es-ES": {
             "subtitle": "Qué decir en cada conversación",
             "description": "Sabe qué decir cuando llega una pregunta de entrevista, una objeción de un cliente o un giro inesperado en una reunión. MagicInterview usa tu CV, la oferta de trabajo, el resumen del cliente y tus notas para ayudarte a preparar una respuesta clara.\n\nEn ChatGPT, conecta tu cuenta de MagicInterview, elige una conversación y comparte la pregunta o el fragmento de texto. Puedes trabajar con tus proyectos y fuentes, pedir orientación y guardar respuestas junto a la conversación.\n\nTambién puedes conectar Notion desde Workspace → Notion en la web: importa páginas como fuentes o activa la sincronización opcional de reuniones. Edita el resumen en Notion y consulta allí la transcripción y las respuestas guardadas.\n\nPara escuchar audio en directo y ver sugerencias durante una llamada, abre esa misma conversación en la app completa de MagicInterview. ChatGPT trabaja con el texto y el contexto guardado que compartes; no escucha tu llamada."
+          },
+          "zh-CN": {
+            "subtitle": "面试与会议中，知道下一句怎么说",
+            "description": "当面试问题出现、客户提出异议或会议出现意外转折时，帮助你想清楚接下来怎么说。MagicInterview 根据你的简历、职位描述、客户背景和笔记，帮助你准备清晰的回答。\n\n在 ChatGPT 中连接 MagicInterview 账户，选择一段对话，再提供需要帮助的问题或文字片段。你可以使用已保存的项目和资料，获取回答建议，并把建议保存在同一段对话中。\n\n你也可以在网页版的 Workspace → Notion 中连接 Notion：将页面导入为资料来源，或启用可选的会议同步。在 Notion 中编辑会议简报，并在那里查看转录和已保存的回答建议。\n\n若要在通话期间收听实时音频并查看建议，请在 MagicInterview 完整应用中打开同一段对话。ChatGPT 处理的是你提供的文字和已保存的背景资料，不会收听你的通话。"
+          },
+          "fr-FR": {
+            "subtitle": "Sachez quoi dire au bon moment",
+            "description": "Trouvez quoi dire lorsqu’une question d’entretien arrive, qu’un client soulève une objection ou qu’une réunion prend une tournure inattendue. MagicInterview utilise votre CV, la description du poste, le contexte du client et vos notes pour vous aider à préparer une réponse claire.\n\nDans ChatGPT, connectez votre compte MagicInterview, choisissez une conversation et partagez la question ou l’extrait de texte. Vous pouvez travailler avec vos projets et sources, demander des suggestions et enregistrer les réponses dans la conversation.\n\nVous pouvez aussi connecter Notion depuis Workspace → Notion sur le web : importez des pages comme sources ou activez la synchronisation facultative des réunions. Modifiez le brief dans Notion et consultez-y la transcription et les réponses enregistrées.\n\nPour écouter l’audio en direct et voir des suggestions pendant un appel, ouvrez cette même conversation dans l’application complète de MagicInterview. ChatGPT travaille avec le texte et le contexte enregistré que vous partagez ; il n’écoute pas votre appel."
+          },
+          "de-DE": {
+            "subtitle": "Wissen, was Sie sagen können",
+            "description": "Finden Sie die passenden Worte, wenn eine Interviewfrage gestellt wird, ein Kunde einen Einwand vorbringt oder ein Meeting eine unerwartete Wendung nimmt. MagicInterview nutzt Ihren Lebenslauf, die Stellenbeschreibung, Kundeninformationen und Ihre Notizen, um Ihnen bei einer klaren Antwort zu helfen.\n\nVerbinden Sie in ChatGPT Ihr MagicInterview-Konto, wählen Sie eine Unterhaltung und teilen Sie die Frage oder den Textausschnitt. Sie können mit Ihren Projekten und Quellen arbeiten, Vorschläge anfordern und Antworten in der Unterhaltung speichern.\n\nSie können Notion auch über Workspace → Notion im Web verbinden: Importieren Sie Seiten als Quellen oder aktivieren Sie die optionale Meeting-Synchronisierung. Bearbeiten Sie das Briefing in Notion und sehen Sie dort das Transkript und gespeicherte Antwortvorschläge.\n\nUm während eines Anrufs Live-Audio zu erfassen und Vorschläge zu sehen, öffnen Sie dieselbe Unterhaltung in der vollständigen MagicInterview-App. ChatGPT arbeitet mit dem Text und gespeicherten Kontext, den Sie teilen; es hört Ihren Anruf nicht mit."
+          },
+          "pt-BR": {
+            "subtitle": "Saiba o que dizer na hora",
+            "description": "Saiba o que dizer quando surge uma pergunta de entrevista, uma objeção de um cliente ou uma mudança inesperada na reunião. O MagicInterview usa seu currículo, a descrição da vaga, o contexto do cliente e suas anotações para ajudar você a preparar uma resposta clara.\n\nNo ChatGPT, conecte sua conta do MagicInterview, escolha uma conversa e compartilhe a pergunta ou o trecho de texto. Você pode trabalhar com seus projetos e fontes, pedir sugestões e salvar respostas na conversa.\n\nVocê também pode conectar o Notion em Workspace → Notion na web: importe páginas como fontes ou ative a sincronização opcional de reuniões. Edite o briefing no Notion e consulte ali a transcrição e as respostas salvas.\n\nPara captar áudio ao vivo e ver sugestões durante uma chamada, abra a mesma conversa no aplicativo completo do MagicInterview. O ChatGPT trabalha com o texto e o contexto salvo que você compartilha; ele não escuta sua chamada."
+          },
+          "it-IT": {
+            "subtitle": "Sai cosa dire quando conta",
+            "description": "Trova cosa dire quando arriva una domanda al colloquio, un cliente solleva un’obiezione o una riunione prende una piega inattesa. MagicInterview usa il tuo CV, la descrizione del ruolo, il contesto del cliente e i tuoi appunti per aiutarti a preparare una risposta chiara.\n\nIn ChatGPT, collega il tuo account MagicInterview, scegli una conversazione e condividi la domanda o il brano di testo. Puoi lavorare con i tuoi progetti e le tue fonti, chiedere suggerimenti e salvare le risposte nella conversazione.\n\nPuoi anche collegare Notion da Workspace → Notion sul web: importa pagine come fonti o attiva la sincronizzazione facoltativa delle riunioni. Modifica il brief in Notion e consulta lì la trascrizione e le risposte salvate.\n\nPer acquisire audio dal vivo e vedere suggerimenti durante una chiamata, apri la stessa conversazione nell’app completa di MagicInterview. ChatGPT lavora con il testo e il contesto salvato che condividi; non ascolta la tua chiamata."
+          },
+          "ja-JP": {
+            "subtitle": "面接や会議で、次に何を話すか",
+            "description": "面接で質問されたとき、顧客から反論があったとき、会議が予想外の展開になったときに、次に何を話すかを考える手助けをします。MagicInterview は履歴書、求人情報、顧客の背景情報、メモを使い、明確な回答を準備するお手伝いをします。\n\nChatGPT で MagicInterview アカウントを接続し、会話を選び、質問やテキストを共有してください。保存済みのプロジェクトや資料を使って回答の提案を求め、同じ会話に回答を保存できます。\n\nWeb 版の Workspace → Notion から Notion を接続することもできます。ページを資料として取り込むか、任意で会議の同期を有効にします。Notion で会議の概要を編集し、文字起こしや保存済みの回答を確認できます。\n\n通話中に音声を取り込み、提案を表示するには、同じ会話を MagicInterview のフルアプリで開いてください。ChatGPT が扱うのは共有されたテキストと保存済みの背景情報であり、通話の音声を聞くことはありません。"
+          },
+          "ko-KR": {
+            "subtitle": "면접과 회의에서 다음에 할 말",
+            "description": "면접 질문을 받거나, 고객이 이의를 제기하거나, 회의가 예상치 못한 방향으로 흘러갈 때 다음에 할 말을 준비하세요. MagicInterview는 이력서, 채용 공고, 고객 배경 정보와 메모를 바탕으로 명확한 답변을 준비하도록 도와줍니다.\n\nChatGPT에서 MagicInterview 계정을 연결하고 대화를 선택한 뒤 질문이나 텍스트를 공유하세요. 저장된 프로젝트와 자료를 활용해 답변 제안을 요청하고 같은 대화에 답변을 저장할 수 있습니다.\n\n웹의 Workspace → Notion에서 Notion을 연결할 수도 있습니다. 페이지를 자료로 가져오거나 선택적으로 회의 동기화를 켜세요. Notion에서 회의 브리핑을 편집하고 녹취록과 저장된 답변을 확인할 수 있습니다.\n\n통화 중 실시간 오디오를 수집하고 제안을 보려면 MagicInterview 전체 앱에서 같은 대화를 여세요. ChatGPT는 공유한 텍스트와 저장된 배경 정보를 사용하며, 통화 내용을 듣지 않습니다."
           }
         }
       },

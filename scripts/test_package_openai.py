@@ -56,6 +56,9 @@ class ListingPackageTests(unittest.TestCase):
             self.assertEqual(review['demo_recording_url'], 'https://github.com/samihalawa/magicinterview-plugin/releases/download/v1.0.0/magicinterview-review-demo.mp4')
             self.assertNotIn('test_credentials', review)
             self.assertNotIn('reviewer_instructions', review)
+            translations = json.loads(archive.read('.codex-plugin/plugin.json'))['extensions']['com.openai']['publication']['translations']
+            self.assertEqual(set(translations), {'es-ES', 'zh-CN', 'fr-FR', 'de-DE', 'pt-BR', 'it-IT', 'ja-JP', 'ko-KR'})
+            self.assertEqual(len(translations) + 1, 9)  # English is the base listing.
 
     def test_screenshot_manifest_drift_is_rejected(self):
         self.edit('.codex-plugin/plugin.json', lambda data: data['interface'].update(screenshots=['./assets/mac-coach.webp']))
