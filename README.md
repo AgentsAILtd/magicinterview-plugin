@@ -73,6 +73,18 @@ One compact feature menu covers:
 
 Live listening does not start remotely through MCP. Use the web app on your computer or phone, or the Mac and Android apps. On iPhone, add MagicInterview to your Home Screen for quick access. Links preserve the selected conversation.
 
+## Release downloads
+
+[Latest release](https://github.com/samihalawa/magicinterview-plugin/releases/latest) · [All releases](https://github.com/samihalawa/magicinterview-plugin/releases)
+
+| Use | Download or connect |
+| --- | --- |
+| ChatGPT / OpenAI plugin upload | [OpenAI package 1.4.3](https://github.com/samihalawa/magicinterview-plugin/releases/download/v1.4.3/magicinterview-openai-1.4.3.zip) — includes the OpenAI listing, skills, screenshots and OAuth configuration. |
+| Standard plugin files for local installation or development | [Plugin source 1.4.3](https://github.com/samihalawa/magicinterview-plugin/releases/download/v1.4.3/magicinterview-plugin-1.4.3.zip) — extract the archive, then use your client's supported local-plugin installation flow. Includes Claude and Codex manifests, skills and the standard MCP configuration. |
+| Remote MCP clients, including Cursor and VS Code | Connect to `https://magicinterview.ai/mcp` using your client's remote MCP setup. No ZIP is required. [Connection guides](https://magicinterview.ai/guides). |
+
+Choose the package for your client. Marketplace installations follow that marketplace's update process; downloading a release does not publish or update a marketplace listing. Release 1.4.3 source is pinned to `c33bd79590a371f19b9cc589f990966fdb055cd2`.
+
 ## Connect through your assistant
 
 Install the plugin and choose **Connect** in your AI assistant. When the browser opens, create a free MagicInterview account or sign in, approve the connection, and return to your assistant. OAuth-capable clients handle authorization without copying an API key. If your client only supports a bearer token, use the optional manual setup in [connection settings](https://magicinterview.ai/app/settings/mcp); keep that token private.
