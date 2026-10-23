@@ -1,4 +1,4 @@
-"""Package the existing OpenAI listing without replacing its saved MCP connection."""
+"""Package the canonical plugin listing with explicit OAuth discovery."""
 import hashlib
 import json
 from pathlib import Path
@@ -6,6 +6,7 @@ import sys
 import zipfile
 import struct
 import xml.etree.ElementTree as ET
+import re
 
 root = Path(__file__).resolve().parents[1]
 def local_file(directory, relative):
@@ -83,7 +84,7 @@ def validate_screenshot(directory, relative):
 def package_members(canonical):
     interface = canonical['interface']
     return list(dict.fromkeys([
-        'skills/meeting-prep/SKILL.md', 'skills/meeting-prep/agents/openai.yaml',
+        'skills/magicinterview-prepare-meeting/SKILL.md', 'skills/magicinterview-prepare-meeting/agents/openai.yaml',
         canonical['extensions']['com.openai']['onboardingSkill'].removeprefix('./'),
         interface['composerIcon'].removeprefix('./'), interface['logo'].removeprefix('./'),
         *(path.removeprefix('./') for path in interface.get('screenshots', [])),
@@ -129,6 +130,9 @@ def validate_metadata(directory):
             for case in entries:
                 required = ['description', 'prompt'] + (['tools_triggered', 'expected_behavior'] if kind == 'positive' else [])
                 assert all(isinstance(case.get(field), str) and case[field].strip() for field in required), 'Incomplete review case'
+                if kind == 'positive':
+                    names = [name.strip() for name in case['tools_triggered'].split(',')]
+                    assert all(name.startswith('magicinterview_') and len(name) <= 64 for name in names), 'Review cases must use branded tool names'
     assert 'test_credentials' not in review and 'reviewer_instructions' not in review, 'Reviewer access must stay in secure portal fields'
     onboarding = canonical['extensions']['com.openai']['onboardingSkill']
     assert root_openai['onboardingSkill'] == onboarding, 'Onboarding skill copies differ'
@@ -141,6 +145,28 @@ def validate_metadata(directory):
         validate_screenshot(directory, relative)
     for relative in package_members(canonical):
         local_file(directory, './' + relative)
+    expected_skills = {'magicinterview-get-started', 'magicinterview-prepare-meeting'}
+    skill_files = list((directory / 'skills').glob('*/SKILL.md'))
+    assert {path.parent.name for path in skill_files} == expected_skills, 'Skill directories must use the branded identifiers'
+    for skill_file in skill_files:
+        text = skill_file.read_text()
+        name = re.search(r'^name:\s*(\S+)\s*$', text, re.MULTILINE)
+        assert name and name.group(1) == skill_file.parent.name, 'Skill name differs from its directory'
+        for reference in re.findall(r'\]\(([^)]+)\)', text):
+            if '://' not in reference and not reference.startswith('#'):
+                target = (skill_file.parent / reference.split('#', 1)[0]).resolve()
+                assert target.is_relative_to(directory.resolve()) and target.is_file(), 'Broken local skill reference'
+    agent_file = directory / 'skills/magicinterview-prepare-meeting/agents/openai.yaml'
+    assert '$magicinterview-prepare-meeting' in agent_file.read_text(), 'Agent prompt must reference the branded skill'
+    card = manifests['lhm.plugin.json']
+    tools = card.get('tools', [])
+    names = [tool.get('name', '') for tool in tools]
+    assert len(names) == len(set(names)) and all(name.startswith('magicinterview_') and len(name) <= 64 for name in names), 'Service card must use unique branded tool names'
+    assert 'magicinterview_prepare_meeting' in names and 'magicinterview_open_workspace' in names, 'Service card is missing preparation or workspace action'
+    resource_uris = {resource['uri'] for resource in card.get('resources', [])}
+    for tool in tools:
+        reference = tool.get('_meta', {}).get('ui', {}).get('resourceUri')
+        assert not reference or reference in resource_uris, 'Service card is missing its workspace resource'
     return canonical
 
 
@@ -157,8 +183,8 @@ def main():
     if sys.argv[1:] == ['--check']:
         print(json.dumps({'validated': 5, 'version': manifest['version'], 'listingCharacters': len(manifest['interface']['longDescription']), 'screenshots': manifest['interface'].get('screenshots', []), 'onboardingSkill': manifest['extensions']['com.openai']['onboardingSkill'], 'packageFiles': package_members(manifest)}))
         return
-    manifest['name'] = 'app-6abab8682c508191ba77499620af8241'
-    # Preserve the exact server URL already saved in the publishing portal.
+    # Package identity comes from the canonical manifest, never a deleted portal record.
+    assert manifest['name'] == 'magicinterview', 'Unexpected canonical plugin identity'
     manifest['mcpServers'] = './.mcp.json'
     output = Path(sys.argv[1])
     with zipfile.ZipFile(output, 'w', zipfile.ZIP_DEFLATED) as archive:

@@ -1,7 +1,7 @@
 {
   "identifier": "samihalawa-magicinterview-plugin",
   "name": "MagicInterview",
-  "version": "1.4.3",
+  "version": "1.4.4",
   "author": "Sami Halawa",
   "authorUrl": "https://github.com/samihalawa",
   "category": "productivity",
@@ -17,7 +17,7 @@
   ],
   "tools": [
     {
-      "name": "get_profile",
+      "name": "magicinterview_get_profile",
       "title": "MagicInterview profile",
       "description": "Return the MagicInterview account represented by this connection. The opaque id stays stable across reconnects and token refreshes.",
       "inputSchema": {
@@ -78,7 +78,7 @@
       }
     },
     {
-      "name": "get_tool_catalog",
+      "name": "magicinterview_get_tool_catalog",
       "title": "MagicInterview tool catalog",
       "description": "Browse available MagicInterview operations by category, with exact names, descriptions, and read/write annotations.",
       "inputSchema": {
@@ -133,7 +133,7 @@
       }
     },
     {
-      "name": "learn_tools",
+      "name": "magicinterview_learn_tools",
       "title": "Learn MagicInterview operations",
       "description": "Retrieve descriptions, read/write annotations, and input schemas for a batch of exact MagicInterview operation names from the catalog.",
       "inputSchema": {
@@ -199,7 +199,7 @@
       }
     },
     {
-      "name": "read_tool",
+      "name": "magicinterview_read_tool",
       "title": "Read MagicInterview data",
       "description": "Run one cataloged read-only MagicInterview operation with its schema-defined arguments. Accepts only operations annotated readOnlyHint: true and never changes workspace data.",
       "inputSchema": {
@@ -249,7 +249,7 @@
       }
     },
     {
-      "name": "execute_tool",
+      "name": "magicinterview_execute_tool",
       "title": "Change MagicInterview data",
       "description": "Run one cataloged MagicInterview write operation with its schema-defined arguments. Accepts only operations annotated readOnlyHint: false, including explicitly requested deletions.",
       "inputSchema": {
@@ -299,9 +299,106 @@
       }
     },
     {
-      "name": "show_magicinterview",
+      "name": "magicinterview_prepare_meeting",
+      "title": "MagicInterview: Prepare a meeting or interview",
+      "description": "Save a meeting, interview, sales call or practice brief in MagicInterview with its title, notes and existing sources. Returns the saved conversation and app URL. Defaults to meeting preparation without changing the active conversation. Does not start audio, generate coaching or purchase access.",
+      "inputSchema": {
+        "$schema": "http://json-schema.org/draft-07/schema#",
+        "type": "object",
+        "properties": {
+          "title": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 120
+          },
+          "projectId": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 100
+          },
+          "purpose": {
+            "default": "meeting",
+            "type": "string",
+            "enum": [
+              "interview",
+              "meeting",
+              "sales",
+              "practice"
+            ]
+          },
+          "role": {
+            "type": "string",
+            "maxLength": 500
+          },
+          "company": {
+            "type": "string",
+            "maxLength": 500
+          },
+          "notes": {
+            "default": "",
+            "type": "string",
+            "maxLength": 750000
+          },
+          "contextItemIds": {
+            "maxItems": 100,
+            "type": "array",
+            "items": {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 100
+            }
+          },
+          "speechLanguage": {
+            "default": "en-US",
+            "type": "string",
+            "maxLength": 32
+          },
+          "activate": {
+            "default": false,
+            "type": "boolean"
+          }
+        },
+        "required": [
+          "title",
+          "purpose",
+          "notes",
+          "speechLanguage",
+          "activate"
+        ],
+        "additionalProperties": false
+      },
+      "annotations": {
+        "readOnlyHint": false,
+        "destructiveHint": false,
+        "idempotentHint": false,
+        "openWorldHint": false,
+        "title": "MagicInterview: Prepare a meeting or interview"
+      },
+      "securitySchemes": [
+        {
+          "type": "oauth2",
+          "scopes": [
+            "magicinterview:read",
+            "magicinterview:write"
+          ]
+        }
+      ],
+      "_meta": {
+        "securitySchemes": [
+          {
+            "type": "oauth2",
+            "scopes": [
+              "magicinterview:read",
+              "magicinterview:write"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "name": "magicinterview_open_workspace",
       "title": "Open MagicInterview",
-      "description": "Open your compact MagicInterview workspace: what to say next, coding help, projects, conversations, sources, transcripts and preferences. Uses this connected account's saved data. Live audio and voice practice open in the full app.",
+      "description": "Open your compact MagicInterview workspace: what to say next, coding help, projects, conversations, sources, transcripts, preferences and debug logs. Uses this connected account's saved data. Live audio and voice practice open in the full app.",
       "inputSchema": {
         "type": "object",
         "properties": {
@@ -317,7 +414,8 @@
         "readOnlyHint": true,
         "destructiveHint": false,
         "idempotentHint": true,
-        "openWorldHint": false
+        "openWorldHint": false,
+        "title": "Open MagicInterview"
       },
       "securitySchemes": [
         {
@@ -348,7 +446,7 @@
     },
     {
       "name": "magicinterview_app_read",
-      "title": "Read workspace",
+      "title": "MagicInterview: Read workspace",
       "description": "Read one schema-validated, account-scoped MagicInterview operation from the app.",
       "inputSchema": {
         "$schema": "http://json-schema.org/draft-07/schema#",
@@ -377,7 +475,8 @@
         "readOnlyHint": true,
         "destructiveHint": false,
         "idempotentHint": true,
-        "openWorldHint": false
+        "openWorldHint": false,
+        "title": "MagicInterview: Read workspace"
       },
       "securitySchemes": [
         {
@@ -409,7 +508,7 @@
     },
     {
       "name": "magicinterview_app_write",
-      "title": "Save workspace changes",
+      "title": "MagicInterview: Save workspace changes",
       "description": "Perform one schema-validated MagicInterview change requested in the app.",
       "inputSchema": {
         "$schema": "http://json-schema.org/draft-07/schema#",
@@ -438,7 +537,8 @@
         "readOnlyHint": false,
         "destructiveHint": true,
         "idempotentHint": false,
-        "openWorldHint": true
+        "openWorldHint": true,
+        "title": "MagicInterview: Save workspace changes"
       },
       "securitySchemes": [
         {

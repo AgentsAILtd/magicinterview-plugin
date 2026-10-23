@@ -1,5 +1,5 @@
 ---
-name: meeting-prep
+name: magicinterview-prepare-meeting
 description: Set up MagicInterview live help for job interviews, client calls, sales conversations, and other meetings. Connect the right CV, job description, client brief, and notes; reconcile existing projects and conversations; return the exact live-conversation link. Also use for same-day meeting preparation, context management, coaching, and debug-log investigation.
 ---
 
@@ -11,7 +11,7 @@ For a job interview, connect the user's CV and the actual job description. For a
 
 ## First use, connection and Pro
 
-For a new user asking how to begin, follow [the focused get-started guide](../get-started/SKILL.md); keep urgent questions on the short workflow below.
+For a new user asking how to begin, follow [the focused magicinterview-get-started guide](../magicinterview-get-started/SKILL.md); keep urgent questions on the short workflow below.
 
 A user may have installed this plugin without knowing MagicInterview or having an account. Explain only what they need for the next step: it saves their CV, job or meeting brief and conversation context so they can prepare with an assistant and continue in the full app. The account, assistant connection and saved workspace are free; cloud coaching and AI tools require Pro. Live audio capture runs in the full MagicInterview app.
 
@@ -32,11 +32,11 @@ Do not start a calendar, inbox, CRM or company-research sweep for a live-questio
 
 ## Use the live connection
 
-Use the tools and schemas the current MagicInterview connection exposes. The ChatGPT directory connection exposes named operations directly, such as `list_projects`, `get_conversation`, `request_coaching`, and `get_conversation_url`; call the named tool for each action. Never guess arguments or invoke an operation that is not exposed.
+Use the tools and schemas the current MagicInterview connection exposes. The ChatGPT directory connection exposes named operations directly, such as `magicinterview_list_projects`, `magicinterview_get_conversation`, `magicinterview_request_coaching`, and `magicinterview_get_conversation_url`; call the named tool for each action. Never guess arguments or invoke an operation that is not exposed.
 
-Other MagicInterview clients may use the compact `/mcp` connection. On that connection, browse the operation catalog, learn the needed schemas in one batch, then use `read_tool` for read-only operations and `execute_tool` for changes. Never assume that the two connection shapes have the same callable tool names.
+Other MagicInterview clients may use the compact `/mcp` connection. On that connection, use `magicinterview_get_tool_catalog` to browse the operation catalog, then `magicinterview_learn_tools` to learn the needed schemas in one batch, then use `magicinterview_read_tool` for read-only operations and `magicinterview_execute_tool` for changes. Never assume that the two connection shapes have the same callable tool names.
 
-When the host exposes `show_magicinterview`, use it to open the compact interactive workspace, optionally with the exact `conversationId`. Its data comes from the same connected account. The workspace covers answers, coding, transcript and speaker corrections, context and files, projects and conversations, research and CRM handoffs, recap and follow-up drafts, preferences, account status, and debug logs. Device-based audio, screenshots, focus controls, and voice practice open the selected conversation in the full app. Do not call the app's private helpers from the agent or imply that every host renders MCP Apps. Keep direct conversation links available as well.
+When the host exposes `magicinterview_open_workspace`, use it to open the compact interactive workspace, optionally with the exact `conversationId`. Its data comes from the same connected account. The workspace covers answers, coding, transcript and speaker corrections, context and files, projects and conversations, research and CRM handoffs, recap and follow-up drafts, preferences, account status, and debug logs. Device-based audio, screenshots, focus controls, and voice practice open the selected conversation in the full app. Do not call the app's private helpers from the agent or imply that every host renders MCP Apps. Keep direct conversation links available as well.
 
 ## Notion context and optional meeting sync
 
@@ -45,6 +45,8 @@ When the user keeps preparation in Notion, discover the exposed Notion operation
 Optional meeting sync is a separate configuration: it creates a MagicInterview home with Projects and Meetings inside the selected shared parent page. Notion Brief edits become conversation context; MagicInterview sends managed meeting details, transcripts and saved coaching back to Notion. Use the requested all-project or selected-project scope, preserve other notes, and read back the resulting status. If page access or read/insert/update permissions are missing, link to [Workspace → Notion](https://magicinterview.ai/app/workspace/notion) to connect or reconnect in the browser. Never ask for Notion tokens in chat or claim the integration connected without a successful result.
 
 ## Prepare meetings when requested
+
+When the user asks to create a meeting preparation workspace, use the exposed `magicinterview_prepare_meeting` action after checking for an existing matching conversation. It saves meeting context and returns the direct conversation link; it does not request paid coaching or start live audio. Use the returned schemas and read back the saved meeting before claiming it is ready.
 
 Use this section and the following research/reconciliation steps only when the user explicitly requests meeting preparation, a meeting queue or context updates. For a live question, use the short workflow above and only the sources needed for that question.
 

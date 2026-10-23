@@ -1,6 +1,6 @@
 {
   "name": "magicinterview",
-  "version": "1.4.3",
+  "version": "1.4.4",
   "description": "Know what to say next in interviews and meetings. Bring CV context and Notion notes. Live audio runs in the full app.",
   "author": {
     "name": "Sami Halawa",
@@ -93,7 +93,7 @@
           }
         }
       },
-      "onboardingSkill": "./skills/get-started/SKILL.md",
+      "onboardingSkill": "./skills/magicinterview-get-started/SKILL.md",
       "review": {
         "commerce": true,
         "commerce_description": "MagicInterview offers paid Pro access for cloud coaching and AI tools. Purchases occur in the full MagicInterview app through its platform checkout, not inside ChatGPT.",
@@ -102,32 +102,32 @@
             {
               "description": "Inspect connected demo account and projects without changing data.",
               "prompt": "Show my MagicInterview profile and list my existing projects.",
-              "tools_triggered": "get_profile, list_projects",
+              "tools_triggered": "magicinterview_get_profile, magicinterview_list_projects",
               "expected_behavior": "Return the OpenAI Review profile and existing projects including General; do not mutate records."
             },
             {
               "description": "Read saved Northstar interview context.",
               "prompt": "Open my Northstar Labs — Senior AI Engineer conversation and summarize the candidate profile and role brief saved with it. Do not change anything.",
-              "tools_triggered": "list_conversations, get_conversation",
+              "tools_triggered": "magicinterview_list_conversations, magicinterview_get_conversation",
               "expected_behavior": "Find conversation 1cee05aa-a352-453c-b2a1-543c4706df57. Read it with includeTurns and includeContextBodies set to true. Summarize only the returned sample context and return its exact conversation URL. Do not mutate records."
             },
             {
               "description": "Context-grounded interview guidance without saving.",
               "prompt": "In my Northstar Labs — Senior AI Engineer conversation, help me answer: How would you design a reliable support assistant using retrieval and escalation? Do not save this practice answer.",
-              "tools_triggered": "get_conversation, request_coaching",
-              "expected_behavior": "Call request_coaching for conversationId 1cee05aa-a352-453c-b2a1-543c4706df57, with speaker interviewer and save false. Return a nonempty, context-grounded answer and conversationUrl. The result has saved false and the saved conversation remains unchanged."
+              "tools_triggered": "magicinterview_get_conversation, magicinterview_request_coaching",
+              "expected_behavior": "Call magicinterview_request_coaching for conversationId 1cee05aa-a352-453c-b2a1-543c4706df57, with speaker interviewer and save false. Return a nonempty, context-grounded answer and conversationUrl. The result has saved false and the saved conversation remains unchanged."
             },
             {
               "description": "Client-objection guidance.",
               "prompt": "In Acme Retail — AI support discovery, help me respond to: Your proposed AI support pilot sounds expensive. Why should we try it? Do not save the answer.",
-              "tools_triggered": "list_conversations, get_conversation, request_coaching",
+              "tools_triggered": "magicinterview_list_conversations, magicinterview_get_conversation, magicinterview_request_coaching",
               "expected_behavior": "Use conversation review-sales-2026 with speaker interviewer and save false. Return a nonempty answer grounded in its meeting brief, with saved false. Do not invent client facts or claim an email was sent."
             },
             {
               "description": "Interactive workspace and Notion status.",
               "prompt": "Open MagicInterview for my Northstar Labs interview and tell me whether Notion meeting sync is connected. Do not enable sync.",
-              "tools_triggered": "show_magicinterview, get_notion_sync",
-              "expected_behavior": "Call show_magicinterview with conversationId 1cee05aa-a352-453c-b2a1-543c4706df57 and return the workspace handoff. get_notion_sync returns connected false and sync.enabled false for the review account. Explain that connecting requires Workspace → Notion in the browser. Do not enable sync or claim the workspace rendered if the host does not support it."
+              "tools_triggered": "magicinterview_open_workspace, magicinterview_get_notion_sync",
+              "expected_behavior": "Call magicinterview_open_workspace with conversationId 1cee05aa-a352-453c-b2a1-543c4706df57 and return the workspace handoff. magicinterview_get_notion_sync returns connected false and sync.enabled false for the review account. Explain that connecting requires Workspace → Notion in the browser. Do not enable sync or claim the workspace rendered if the host does not support it."
             }
           ],
           "negative": [

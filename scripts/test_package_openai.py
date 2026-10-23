@@ -37,7 +37,7 @@ class ListingPackageTests(unittest.TestCase):
     def test_package_includes_all_advertised_images_and_onboarding(self):
         data = validate_metadata(self.directory)
         members = package_members(data)
-        self.assertIn('skills/get-started/SKILL.md', members)
+        self.assertIn('skills/magicinterview-get-started/SKILL.md', members)
         self.assertIn('assets/assistant-workspace.jpg', members)
         self.assertEqual(data['interface']['screenshots'], ['./assets/assistant-workspace.jpg', './assets/notion-meeting-sync.jpg'])
         self.assertIn('assets/notion-meeting-sync.jpg', members)
@@ -46,6 +46,11 @@ class ListingPackageTests(unittest.TestCase):
         output = self.directory / 'fresh-upload.zip'
         subprocess.run([sys.executable, str(root / 'scripts/package_openai.py'), str(output)], check=True, capture_output=True)
         with zipfile.ZipFile(output) as archive:
+            packaged = json.loads(archive.read('.codex-plugin/plugin.json'))
+            self.assertEqual(packaged['name'], 'magicinterview')
+            self.assertEqual(packaged['version'], data['version'])
+            self.assertNotIn('app-6abab8682c508191ba77499620af8241', archive.read('.codex-plugin/plugin.json').decode())
+            self.assertEqual({name.split('/')[1] for name in archive.namelist() if name.startswith('skills/')}, {'magicinterview-get-started', 'magicinterview-prepare-meeting'})
             server = json.loads(archive.read('.mcp.json'))['mcpServers']['magicinterview']
             self.assertEqual(server['url'], 'https://magicinterview.ai/mcp?toolset=directory')
             self.assertEqual(server['extensions']['com.openai']['auth'], {'type': 'oauth', 'client': {'mode': 'dcr'}})
@@ -65,13 +70,54 @@ class ListingPackageTests(unittest.TestCase):
         with self.assertRaisesRegex(AssertionError, 'listing copies differ'):
             validate_metadata(self.directory)
 
+    def test_review_cases_reject_unbranded_tool_names(self):
+        def change(data):
+            data['extensions']['com.openai']['review']['test_cases']['positive'][0]['tools_triggered'] = 'get_profile'
+        for relative in ['plugin.json', '.codex-plugin/plugin.json']:
+            self.edit(relative, change)
+        with self.assertRaisesRegex(AssertionError, 'branded tool names'):
+            validate_metadata(self.directory)
+
+    def test_service_card_rejects_old_tool_names(self):
+        self.edit('lhm.plugin.json', lambda data: data['tools'][0].update(name='get_profile'))
+        with self.assertRaisesRegex(AssertionError, 'unique branded tool names'):
+            validate_metadata(self.directory)
+
+    def test_service_card_requires_referenced_workspace_resource(self):
+        self.edit('lhm.plugin.json', lambda data: data.update(resources=[]))
+        with self.assertRaisesRegex(AssertionError, 'workspace resource'):
+            validate_metadata(self.directory)
+
+    def test_skill_name_must_match_branded_directory(self):
+        target = self.directory / 'skills/magicinterview-get-started/SKILL.md'
+        target.write_text(target.read_text().replace('name: magicinterview-get-started', 'name: get-started'))
+        with self.assertRaisesRegex(AssertionError, 'Skill name differs'):
+            validate_metadata(self.directory)
+
+    def test_broken_sibling_skill_link_is_rejected(self):
+        target = self.directory / 'skills/magicinterview-prepare-meeting/SKILL.md'
+        target.write_text(target.read_text().replace('../magicinterview-get-started/SKILL.md', '../get-started/SKILL.md'))
+        with self.assertRaisesRegex(AssertionError, 'Broken local skill reference'):
+            validate_metadata(self.directory)
+
+    def test_deprecated_duplicate_skill_directory_is_rejected(self):
+        shutil.copytree(self.directory / 'skills/magicinterview-get-started', self.directory / 'skills/get-started')
+        with self.assertRaisesRegex(AssertionError, 'Skill directories must use'):
+            validate_metadata(self.directory)
+
+    def test_agent_prompt_must_reference_branded_skill(self):
+        target = self.directory / 'skills/magicinterview-prepare-meeting/agents/openai.yaml'
+        target.write_text(target.read_text().replace('$magicinterview-prepare-meeting', '$meeting-prep'))
+        with self.assertRaisesRegex(AssertionError, 'Agent prompt must reference'):
+            validate_metadata(self.directory)
+
     def test_onboarding_manifest_drift_is_rejected(self):
-        self.edit('plugin.json', lambda data: data['extensions']['com.openai'].update(onboardingSkill='./skills/meeting-prep/SKILL.md'))
+        self.edit('plugin.json', lambda data: data['extensions']['com.openai'].update(onboardingSkill='./skills/magicinterview-prepare-meeting/SKILL.md'))
         with self.assertRaisesRegex(AssertionError, 'Onboarding skill copies differ'):
             validate_metadata(self.directory)
 
     def test_missing_onboarding_is_rejected(self):
-        (self.directory / 'skills/get-started/SKILL.md').unlink()
+        (self.directory / 'skills/magicinterview-get-started/SKILL.md').unlink()
         with self.assertRaisesRegex(AssertionError, 'Missing asset'):
             validate_metadata(self.directory)
 

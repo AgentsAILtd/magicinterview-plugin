@@ -32,6 +32,10 @@ flowchart TD
 
 **New to MagicInterview?** You can [try a preparation preview without an account](https://magicinterview.ai/interview-tomorrow), then [create a free account](https://magicinterview.ai/app?auth=sign-up) to save your CV, job details and notes. Install this plugin, connect through your assistant's browser sign-in, approve access and return to the assistant. Ask it to prepare your first conversation using that context. Your account, connection and saved workspace are free; cloud coaching and AI tools require [Pro](https://magicinterview.ai/app?auth=sign-up&returnTo=pro). No card is required for a free account. Open the same conversation in the full app for live audio capture.
 
+## Branded skills and actions
+
+The plugin provides `magicinterview-get-started` for first use and `magicinterview-prepare-meeting` for interview or meeting preparation. In supported assistants, ask MagicInterview to prepare the conversation using your CV, meeting brief or Notion notes. The `magicinterview_prepare_meeting` action saves a meeting or interview conversation and returns its direct link; live audio opens in the full app.
+
 ## Live help when the conversation matters
 
 **Interviewing for your next job?** Add your CV and the job description. Get live suggestions that connect your experience to the role when the interviewer asks a question.
