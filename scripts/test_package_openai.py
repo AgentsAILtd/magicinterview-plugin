@@ -17,7 +17,7 @@ class ListingPackageTests(unittest.TestCase):
         self.temp = tempfile.TemporaryDirectory()
         self.addCleanup(self.temp.cleanup)
         self.directory = Path(self.temp.name)
-        for relative in ['plugin.json', '.codex-plugin/plugin.json', '.claude-plugin/plugin.json', 'server.json', 'lhm.plugin.json']:
+        for relative in ['plugin.json', '.codex-plugin/plugin.json', '.claude-plugin/plugin.json', 'server.json', 'lhm.plugin.json', 'README.md']:
             target = self.directory / relative
             target.parent.mkdir(parents=True, exist_ok=True)
             shutil.copy(root / relative, target)
@@ -68,6 +68,13 @@ class ListingPackageTests(unittest.TestCase):
     def test_screenshot_manifest_drift_is_rejected(self):
         self.edit('.codex-plugin/plugin.json', lambda data: data['interface'].update(screenshots=['./assets/mac-coach.webp']))
         with self.assertRaisesRegex(AssertionError, 'listing copies differ'):
+            validate_metadata(self.directory)
+
+    def test_readme_downloads_must_match_package_version(self):
+        target = self.directory / 'README.md'
+        version = json.loads((self.directory / 'plugin.json').read_text())['version']
+        target.write_text(target.read_text().replace(f'magicinterview-openai-{version}.zip', 'magicinterview-openai-0.0.0.zip'))
+        with self.assertRaisesRegex(AssertionError, 'download links must match'):
             validate_metadata(self.directory)
 
     def test_review_cases_reject_unbranded_tool_names(self):

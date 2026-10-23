@@ -1,7 +1,7 @@
 {
   "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
   "name": "magicinterview",
-  "version": "1.4.4",
+  "version": "1.4.5",
   "description": "Know what to say next in interviews and meetings. Bring CV context and Notion notes. Live audio runs in the full app.",
   "author": {
     "name": "Sami Halawa",

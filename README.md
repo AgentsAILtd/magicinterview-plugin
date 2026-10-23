@@ -83,11 +83,11 @@ Live listening does not start remotely through MCP. Use the web app on your comp
 
 | Use | Download or connect |
 | --- | --- |
-| ChatGPT / OpenAI plugin upload | [OpenAI package 1.4.4](https://github.com/samihalawa/magicinterview-plugin/releases/download/v1.4.4/magicinterview-openai-1.4.4.zip) — includes the OpenAI listing, skills, screenshots and OAuth configuration. |
-| Standard plugin files for local installation or development | [Plugin source 1.4.4](https://github.com/samihalawa/magicinterview-plugin/releases/download/v1.4.4/magicinterview-plugin-1.4.4.zip) — extract the archive, then use your client's supported local-plugin installation flow. Includes Claude and Codex manifests, skills and the standard MCP configuration. |
+| ChatGPT / OpenAI plugin upload | [OpenAI package 1.4.5](https://github.com/samihalawa/magicinterview-plugin/releases/download/v1.4.5/magicinterview-openai-1.4.5.zip) — includes the OpenAI listing, skills, screenshots and OAuth configuration. |
+| Standard plugin files for local installation or development | [Plugin source 1.4.5](https://github.com/samihalawa/magicinterview-plugin/releases/download/v1.4.5/magicinterview-plugin-1.4.5.zip) — extract the archive, then use your client's supported local-plugin installation flow. Includes Claude and Codex manifests, skills and the standard MCP configuration. |
 | Remote MCP clients, including Cursor and VS Code | Connect to `https://magicinterview.ai/mcp` using your client's remote MCP setup. No ZIP is required. [Connection guides](https://magicinterview.ai/guides). |
 
-Choose the package for your client. Marketplace installations follow that marketplace's update process; downloading a release does not publish or update a marketplace listing. Release 1.4.4 source is pinned to `9aff13ec43109136ae4c7f195b652c1701b47f9b`.
+Choose the package for your client. Marketplace installations follow that marketplace's update process; downloading a release does not publish or update a marketplace listing. Release source is pinned by the versioned release tag.
 
 ## Connect through your assistant
 

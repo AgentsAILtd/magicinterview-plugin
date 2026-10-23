@@ -96,6 +96,12 @@ def validate_metadata(directory):
         'plugin.json', '.codex-plugin/plugin.json', '.claude-plugin/plugin.json', 'server.json', 'lhm.plugin.json',
     ]}
     canonical = manifests['.codex-plugin/plugin.json']
+    readme = (directory / 'README.md').read_text()
+    version = canonical['version']
+    for kind in ('openai', 'plugin'):
+        assert f'/releases/download/v{version}/magicinterview-{kind}-{version}.zip' in readme, 'README download links must match the package version'
+    zip_links = re.findall(r'/releases/download/v([^/]+)/magicinterview-(?:openai|plugin)-([^/)]+)\.zip', readme)
+    assert all(tag_version == version and asset_version == version for tag_version, asset_version in zip_links), 'README contains a stale package download'
     listing = canonical['interface']
     assert manifests['plugin.json']['extensions']['com.openai']['interface'] == listing, 'OpenAI listing copies differ'
     for name, data in manifests.items():
